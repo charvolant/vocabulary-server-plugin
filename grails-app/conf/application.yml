@@ -65,9 +65,6 @@ grails:
             maxsize: 1000
     controllers:
         defaultScope: singleton
-        upload:
-          maxFileSize: 26214400
-          maxRequestSize: 26214400
     converters:
         encoding: UTF-8
     views:
@@ -91,10 +88,3 @@ vocabulary:
 skin:
   layout: base
   fluidLayout: false
-import:
-  biocache:
-    index:
-      fields: https://biocache.ala.org.au/ws/index/fields
-languages:
-  tag:
-    default: xul,wbp
