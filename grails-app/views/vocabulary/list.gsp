@@ -29,7 +29,7 @@
     <tr>
         <td><voc:format value="${resource.'skos:inScheme'}"/></td>
         <td><voc:format value="${resource}"/></td>
-        <td>${resource.'@description'}</td>
+        <td><voc:description value="${resource}"/></td>
         <td><voc:isTag value="${resource}"><voc:concept iri="${resource['@id']}"/></voc:isTag></td>
     </tr>
 </g:each>

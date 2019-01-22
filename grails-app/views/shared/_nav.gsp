@@ -24,17 +24,6 @@
                     </ul>
                 </li>
              </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" href="#" id="navbar-admin" role="button" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false"><g:message code="label.admin"/></a>
-                    <ul class="dropdown-menu" aria-labelledby="navbar-admin">
-                        <li><a href="${createLink(controller: 'translation', action: 'index')}"
-                               class="dropdown-item"><g:message code="page.translation.index.menu"/></a></li>
-                    </ul>
-                </li>
-            </ul>
-
             <div class="navbar-form navbar-right">
                 <g:form controller="vocabulary" action="search" method="GET">
                     <div class="form-group">

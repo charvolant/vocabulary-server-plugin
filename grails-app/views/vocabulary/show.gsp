@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="${grailsApplication.config.skin.layout ?: 'main'}"/>
-    <title><g:message code="resource.show.title" args="${ [ resource['@title'] ?: resource['@label'] ]}"/></title>
+    <title><voc:title value="${resource}"/></title>
     <meta name="breadcrumbParent" content="/,${message(code: 'vocabulary.title')}"/>
     <asset:javascript src="references.js"/>
     <asset:stylesheet href="vocabulary.css"/>
@@ -12,7 +12,7 @@
 
 <div class="container">
     <div class="page-header">
-            <h1>${resource['@title'] ?: resource['@label']}<g:if test="${resource['@title'] && resource['@label']}">&nbsp;(${resource['@label']})</g:if></h1>
+            <h1><voc:title value="${resource}"/></h1>
     </div>
     <g:render template="/shared/nav"/>
     <div class="row">
@@ -22,9 +22,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <if test="${resource['@description']}">
-            <p>${resource['@description']}</p>
-            </if>
+            <p><voc:description value="${resource}"/></p>
         </div>
     </div>
     <div class="row">
