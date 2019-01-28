@@ -37,10 +37,10 @@
                             <g:each var="property" in="${resource['@categorisation'][category]}">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <td><voc:format value="${property}"/></td>
+                                        <voc:format value="${property}"/>
                                     </div>
                                     <div class="col-md-8">
-                                        <td><voc:format value="${resource[property]}" property="${property}" language="true"/></td>
+                                        <voc:format value="${resource[property]}" property="${property}" language="true"/>
                                     </div>
                                 </div>
                             </g:each>
@@ -54,7 +54,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><g:message code="label.appearence"/></div>
                     <div class="panel-body">
-                        <voc:concept iri="${resource['@id']}"/>
+                        <voc:tag iri="${resource['@id']}"/>
                     </div>
                 </div>
             </voc:isTag>
@@ -67,11 +67,11 @@
             </div>
         </div>
     </div>
-    <asset:script type="application/javascript">
-        $(document).ready(function() {
-            loadPage($("#references"), "${g.createLink(controller: 'vocabulary', action: 'references', params: [iri: resource['@id']])}", 0, 10);
-        });
-    </asset:script>
 </div>
+<asset:script type="application/javascript">
+    $(document).ready(function() {
+        loadPage($("#references"), "${g.createLink(controller: 'vocabulary', action: 'references', params: [iri: resource['@id']])}", 0, 10);
+        });
+</asset:script>
 </body>
 </html>

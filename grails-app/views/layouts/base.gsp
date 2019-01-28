@@ -4,30 +4,17 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="app.version" content="${g.meta(name:'app.version')}"/>
     <meta name="app.build" content="${g.meta(name:'app.build')}"/>
-    <meta name="description" content="${grailsApplication.config.skin.orgNameLong}"/>
-    <meta name="author" content="${grailsApplication.config.skin.orgNameLong}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><g:layoutTitle /></title>
 
-    <g:if test="${!grailsApplication.config.headerAndFooter.excludeBootstrapCss}">
-        <link href="${grailsApplication.config.headerAndFooter.baseURL}/css/bootstrap.min.css" rel="stylesheet"
-              media="screen,print"/>
-    </g:if>
-
-    <asset:stylesheet src="${pageProperty(name: 'meta.head-screen-print-css') ?: "core-screen-print"}"
-                      media="screen,print"/>
-    <asset:stylesheet src="${pageProperty(name: 'meta.head-css') ?: "core"}"/>
-
-    <asset:javascript src="${pageProperty(name: 'meta.head-js') ?: 'head'}"/>
-
-    <g:if test="${!grailsApplication.config.headerAndFooter.excludeApplicationJs}">
-        <script type="text/javascript" src="${grailsApplication.config.headerAndFooter.baseURL}/js/application.js"
-                defer></script>
-    </g:if>
-    <g:if test="${!grailsApplication.config.headerAndFooter.excludeBootstrapJs}">
-        <script type="text/javascript"
-                src="${grailsApplication.config.headerAndFooter.baseURL}/js/bootstrap.min.js"></script>
-    </g:if>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <g:layoutHead />
 </head>
@@ -39,7 +26,6 @@
     <g:layoutBody />
 </div>
 
-<asset:javascript src="${pageProperty(name: 'meta.deferred-js') ?: 'jquery-extensions'}" />
 <asset:deferredScripts/>
 </body>
 </html>

@@ -54,9 +54,6 @@ dependencies {
     testCompile "org.grails:grails-web-testing-support"
 
     compile group: 'au.org.ala.grails.plugin', name: 'vocabulary-plugin', version: '1.0-SNAPSHOT', changing: true
-    compile(group: 'org.grails.plugins', name: 'ala-bootstrap3', version: '3.0.6') {
-        exclude group: 'com.bertramlabs.plugins', module: 'asset-pipeline-grails'
-    }
 }
 
 bootRun {
