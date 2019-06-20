@@ -61,6 +61,27 @@ class VocabularyController {
         }
     }
 
+    /**
+     * Produce a SKOS tree suitable for the Gijgo tree widget
+     */
+    def skosTree() {
+        def iri = params.iri
+        def locale = request.locale
+        Map tree = vocabularyService.getSkosTree(iri, locale)
+        def formatted = [tree2(tree)]
+        render formatted as JSON
+    }
+
+    private def tree2(tree) {
+        def link = createLink(controller: 'vocabulary', action: 'show', params: [iri: tree.resource.iri])
+        return [
+                iri: tree.resource.iri,
+                text: "<a href=\"${link}\">${tree.resource.label}</a>",
+                hasChildren: !tree.children.isEmpty(),
+                children: tree.children.collect { child -> tree2(child) }
+        ]
+    }
+
 
     /**
      * XHR produces a reference list suitable for embedding

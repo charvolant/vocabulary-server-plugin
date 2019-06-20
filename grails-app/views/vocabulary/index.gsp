@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="${grailsApplication.config.skin.layout ?: 'main'}"/>
-    <title><g:message code="index.title"/></title>
+    <title><g:message code="page.vocabulary.index.title"/></title>
     <asset:javascript src="references.js"/>
     <asset:stylesheet href="vocabulary.css"/>
 </head>

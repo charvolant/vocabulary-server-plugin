@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="${grailsApplication.config.skin.layout ?: 'main'}"/>
-    <title><g:message code="resource.references.title"/></title>
+    <title><g:message code="page.vocabulary.references.title" args="${$link(controller: 'vocabulary', action: 'show', params: [iri: params.iri]) { params.iri} }"/></title>
     <meta name="breadcrumbParent" content="/,${message(code: 'vocabulary.title')}"/>
 </head>
 <body>

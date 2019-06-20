@@ -6,7 +6,14 @@
     <meta name="breadcrumbParent" content="/,${message(code: 'vocabulary.title')}"/>
     <asset:javascript src="references.js"/>
     <asset:stylesheet href="vocabulary.css"/>
+    <asset:javascript src="gijgo.js"/>
+    <asset:stylesheet href="gijgo.css"/>
     <voc:tagHeader/>
+    <style>
+    .appearance-list {
+
+    }
+    </style>
 </head>
 <body>
 
@@ -50,11 +57,24 @@
             </div>
         </div>
         <div class="col-md-4">
+            <voc:isSkos value="${resource}">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h4 class="panel-title"><g:message code="label.vocabulary"/></h4></div>
+                    <div class="panel-body" id="skos">
+                    </div>
+                </div>
+            </voc:isSkos>
             <voc:isTag  value="${resource}">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><g:message code="label.appearence"/></div>
+                    <div class="panel-heading"><h4 class="panel-title"><g:message code="label.appearence"/></h4></div>
+                    <g:set var="notationSC"><voc:shortCode iri="http://www.w3.org/2004/02/skos/core#notation"/></g:set>
+                    <g:set var="notation" value="${resource.get(notationSC)?.get('@value')}"/>
                     <div class="panel-body">
-                        <voc:tag iri="${resource['@id']}"/>
+                        <ul class="appearance-list">
+                          <li class="align-top"><voc:tag iri="${resource['@id']}"/>&nbsp;<span class="glyphicon glyphicon-paperclip" title="&lt;voc:tag iri=&quot;${resource['@id']}&quot;/&gt;"></span></li>
+                          <g:if test="${notation}"><li class="align-top"><voc:tag concept="${notation}"/>&nbsp;<span class="glyphicon glyphicon-paperclip" title="&lt;voc:tag concept=&quot;${notation}&quot;/&gt;"></span></li></g:if>
+                          <li class="align-top"><voc:tag iri="${resource['@id']}" expand="false"/>&nbsp;<span class="glyphicon glyphicon-paperclip" title="&lt;voc:tag iri=&quot;${resource['@id']}&quot; expand=&quot;false&quot;/&gt;"></span></li>
+                        </ul>
                     </div>
                 </div>
             </voc:isTag>
@@ -71,7 +91,14 @@
 <asset:script type="application/javascript">
     $(document).ready(function() {
         loadPage($("#references"), "${g.createLink(controller: 'vocabulary', action: 'references', params: [iri: resource['@id']])}", 0, 10);
+        <voc:isSkos value="${resource}">
+        var skos = $("#skos").tree({
+            uiLibrary: "bootstrap",
+            dataSource: "${g.createLink(controller: 'vocabulary', action: 'skosTree', params: [iri: resource['@id']])}",
+            primaryKey: "iri"
         });
+        </voc:isSkos>
+    });
 </asset:script>
 </body>
 </html>

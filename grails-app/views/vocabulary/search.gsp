@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="${grailsApplication.config.skin.layout ?: 'main'}"/>
-    <title><g:message code="page.resource.search.title"/></title>
+    <title><g:message code="page.vocabulary.search.title"/></title>
     <meta name="breadcrumbParent" content="/,${message(code: 'vocabulary.title')}"/>
     <asset:stylesheet href="vocabulary.css"/>
 </head>

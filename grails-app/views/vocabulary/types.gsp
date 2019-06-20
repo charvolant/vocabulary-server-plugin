@@ -2,8 +2,9 @@
 <html>
 <head>
     <meta name="layout" content="${grailsApplication.config.skin.layout ?: 'main'}"/>
-    <title><g:message code="resource.types.title"/></title>
+    <title><g:message code="page.vocabulary.types.title"/></title>
     <meta name="breadcrumbParent" content="/,${message(code: 'vocabulary.title')}"/>
+    <voc:tagHeader/>
 </head>
 <body>
 
