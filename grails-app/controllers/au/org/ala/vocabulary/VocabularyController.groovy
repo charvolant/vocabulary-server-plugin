@@ -7,6 +7,7 @@ class VocabularyController {
     def vocabularyService
 
     def index() {
+        render(view: '/index')
     }
 
     def types() {

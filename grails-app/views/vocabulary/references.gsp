@@ -2,14 +2,14 @@
 <html>
 <head>
     <meta name="layout" content="${grailsApplication.config.skin.layout ?: 'main'}"/>
-    <title><g:message code="page.vocabulary.references.title" args="${$link(controller: 'vocabulary', action: 'show', params: [iri: params.iri]) { params.iri} }"/></title>
+    <title><g:message code="page.vocabulary.references.title" args="${[params.iri]}"/></title>
     <meta name="breadcrumbParent" content="/,${message(code: 'vocabulary.title')}"/>
 </head>
 <body>
 
 <div class="container">
     <div class="page-header">
-        <h1><g:message code="page.vocabulary.references.title" args="${$link(controller: 'vocabulary', action: 'show', params: [iri: params.iri]) { params.iri} }"/></h1>
+        <h1><g:link controller="vocabulary" action="show" params="${[iri: params.iri]}"><g:message code="page.vocabulary.references.title" args="${[params.iri]}"/></g:link></h1>
     </div>
     <g:render template="/shared/nav"/>
     <div class="row">

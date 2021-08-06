@@ -10,9 +10,6 @@
     <asset:stylesheet href="gijgo.css"/>
     <voc:tagHeader/>
     <style>
-    .appearance-list {
-
-    }
     </style>
 </head>
 <body>
@@ -58,31 +55,37 @@
         </div>
         <div class="col-md-4">
             <voc:isSkos value="${resource}">
-                <div class="panel panel-default">
-                    <div class="panel-heading"><h4 class="panel-title"><g:message code="label.vocabulary"/></h4></div>
-                    <div class="panel-body" id="skos">
+                <div class="panel panel-default skos-panel">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><g:message code="label.classification"/><voc:helpIcon code="help.classification"/>
+                        <a role="button" data-toggle="collapse" href="#skos" aria-expanded="false" aria-controls="skos"><span class="glyphicon glyphicon-chevron-down">&nbsp;</span></a>
+                        </h4>
+                    </div>
+                    <div class="panel-body collapse" id="skos">
                     </div>
                 </div>
             </voc:isSkos>
             <voc:isTag  value="${resource}">
-                <div class="panel panel-default">
-                    <div class="panel-heading"><h4 class="panel-title"><g:message code="label.appearence"/></h4></div>
+                <div class="panel panel-default appearance-panel">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><g:message code="label.appearence"/><voc:helpIcon code="help.appearance"/>
+                        <a role="button" data-toggle="collapse" href="#appearance" aria-expanded="false" aria-controls="appearance"><span class="glyphicon glyphicon-chevron-down">&nbsp;</span></a>
+                        </h4>
+                    </div>
                     <g:set var="notationSC"><voc:shortCode iri="http://www.w3.org/2004/02/skos/core#notation"/></g:set>
-                    <g:set var="notation" value="${resource.get(notationSC)?.get('@value')}"/>
-                    <div class="panel-body">
-                        <ul class="appearance-list">
-                          <li class="align-top"><voc:tag iri="${resource['@id']}"/>&nbsp;<span class="glyphicon glyphicon-paperclip" title="&lt;voc:tag iri=&quot;${resource['@id']}&quot;/&gt;"></span></li>
-                          <g:if test="${notation}"><li class="align-top"><voc:tag concept="${notation}"/>&nbsp;<span class="glyphicon glyphicon-paperclip" title="&lt;voc:tag concept=&quot;${notation}&quot;/&gt;"></span></li></g:if>
-                          <li class="align-top"><voc:tag iri="${resource['@id']}" expand="false"/>&nbsp;<span class="glyphicon glyphicon-paperclip" title="&lt;voc:tag iri=&quot;${resource['@id']}&quot; expand=&quot;false&quot;/&gt;"></span></li>
-                        </ul>
+                    <g:set var="notation" value="${resource.get(notationSC)?.get(0)?.get('@value')}"/>
+                    <div class="panel-body collapse" id="appearance">
+                    <voc:tag iri="${resource['@id']}"/>
                     </div>
                 </div>
             </voc:isTag>
             <div class="panel panel-default references-panel">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><g:link controller="vocabulary" action="references" params="${[iri: params.iri]}"><g:message code="label.references"/></g:link></h4>
+                    <h4 class="panel-title"><g:link controller="vocabulary" action="references" params="${[iri: params.iri]}"><g:message code="label.references"/></g:link><voc:helpIcon code="help.references"/>
+                        <a role="button" data-toggle="collapse" href="#references" aria-expanded="false" aria-controls="references"><span class="glyphicon glyphicon-chevron-down">&nbsp;</span></a>
+                    </h4>
                 </div>
-                <div class="panel-body" id="references">
+                <div class="panel-body collapse" id="references">
                 </div>
             </div>
         </div>
@@ -98,7 +101,7 @@
             primaryKey: "iri"
         });
         </voc:isSkos>
-    });
+});
 </asset:script>
 </body>
 </html>
